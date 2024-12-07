@@ -1,0 +1,30 @@
+{
+  "name": "coding-challenge-rewardpay",
+  "version": "1.0.0",
+  "description": "This repo contains the instructions and the data you need to complete the _RewardPay coding challenge_.  This challenge is not intended to be complex, but it is an opportunity for you to showcase your understanding and applying of good development practices.",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index.ts",
+    "dev":"nodemon index.ts",
+    "start": "node index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnbaishya/coding-challenge-rewardPay.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johnbaishya/coding-challenge-rewardPay/issues"
+  },
+  "homepage": "https://github.com/johnbaishya/coding-challenge-rewardPay#readme",
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
