@@ -1,5 +1,7 @@
+import runProject from "./src/app";
+
 const main  = ()=>{
-    console.log("this is main page");
+  runProject();
 }
 
 main();
