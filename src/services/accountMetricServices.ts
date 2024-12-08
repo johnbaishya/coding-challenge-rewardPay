@@ -1,9 +1,9 @@
 import { calculateGrossProfitMargin, calculateNetProfitMargin, CalculateTotalValue, calculateWorkingCapitalRatio } from "../libs/accountMetricCalculations"
-import data from '../../data.json';
-import { AccountArrayFilter, AccountCategoryEnum, Account } from "../types";
-import { toCurrencyFigure, toPercentage } from "../utils/formatUtils";
+import { AccountArrayFilter, AccountCategoryEnum } from "../types";
+import { toPercentage } from "../utils/formatUtils";
 
-const accountDataArray:Account[] =data.data;
+
+
 
 // service to get the revenue __________________________________________________________________________________________
 export const getRevenue = ():number=>{

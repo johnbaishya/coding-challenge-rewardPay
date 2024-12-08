@@ -18,7 +18,7 @@ describe('calculateTotalValue libs function test',()=>{
         let filterObj:AccountArrayFilter = {
             account_category:AccountCategoryEnum.Assets,
             value_type:ValueTypeEnum.Debit,
-            // noe the filter value as the array of string. which means the element of array will be considered if account type is bank or fixed. also while considering the above filter values.
+            // now passing the filter value as the array of string. which means the element of array will be considered if account type is bank or fixed. also while considering the above filter values.
             account_type:[AccountTypeEnum.Bank,AccountTypeEnum.Fixed]
         };
         expect( CalculateTotalValue(filterObj)).toBe(16897.08)

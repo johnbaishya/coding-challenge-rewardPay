@@ -1,4 +1,3 @@
-import { after } from "node:test";
 import { AccountArrayFilter, AccountCategoryEnum, Account, AccountTypeEnum, ValueTypeEnum } from "../types";
 import MainData from "../../data.json";
 
@@ -102,8 +101,6 @@ export const calculateTotalAsset = ():number =>{
     }
     let TotalCreditAsset:number = CalculateTotalValue(creditAssetFilter)
     totalAsset  = totalAsset-TotalCreditAsset;
-    console.log("cr asset",TotalCreditAsset)
-
     return totalAsset;
 }
 
@@ -119,7 +116,7 @@ export const calculateTotalAsset = ():number =>{
 
 
 // function to calculate the total Liability. which value later will be used in the function calculateWokingCapitalRatio.
-export const calculatetotalLiability = ():number=>{
+export const calculateTotalLiability = ():number=>{
     let totalLiability:number = 0
     // first adding the total_value of from records where the account_category is set to liability, the value_type is set to credit, and the account_type is one of current or current_accounts_payable
     let creditLiabilityFilter:AccountArrayFilter ={
@@ -159,9 +156,8 @@ export const calculatetotalLiability = ():number=>{
 export const calculateWorkingCapitalRatio = ():number=>{
     // first getting the asset
     let totalAsset:number= calculateTotalAsset();
-    console.log("asset",totalAsset)
     // second getting the liability
-    let totalLiability:number = calculatetotalLiability();
+    let totalLiability:number = calculateTotalLiability();
 
     // finally calculating the working capital ratio dividing the asset by liabilities.
     let workingCapitalRatio:number = totalAsset/totalLiability;
