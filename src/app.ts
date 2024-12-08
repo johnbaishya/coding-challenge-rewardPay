@@ -12,11 +12,8 @@ const runProject = ():void=>{
     let expenseInCurrencyFigure:string = toCurrencyFigure(totalExpense);
 
     // now printing the fiinal output in the console received from services functions.
-    console.log("Revenue: ", revenueInCurrencyFigure)
-    console.log("Expenses: ", expenseInCurrencyFigure)
-    console.log("Gross Profit Margin: ", grossProfitMargin)
-    console.log("Net Profit Margin: ", netProfitMargin)
-    console.log("Working Capital Ratio: ", workingCapitalRatio)
+    let result = `Revenue: ${revenueInCurrencyFigure} \nExpenses: ${expenseInCurrencyFigure} \nGross Profit Margin: ${grossProfitMargin} \nNet Profit Margin: ${netProfitMargin} \nWorking Capital Ratio: ${workingCapitalRatio}`;
+    console.log(result)
 }
 
 export default runProject;
