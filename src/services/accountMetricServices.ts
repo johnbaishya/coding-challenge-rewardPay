@@ -1,4 +1,4 @@
-import { calculateGrossProfitMargin, calculateNetProfitMargin, CalculateTotalValue } from "../libs/accountMetricCalculations"
+import { calculateGrossProfitMargin, calculateNetProfitMargin, CalculateTotalValue, calculateWorkingCapitalRatio } from "../libs/accountMetricCalculations"
 import data from '../../data.json';
 import { AccountArrayFilter, AccountCategoryEnum, Account } from "../types";
 import { toCurrencyFigure, toPercentage } from "../utils/formatUtils";
@@ -6,15 +6,14 @@ import { toCurrencyFigure, toPercentage } from "../utils/formatUtils";
 const accountDataArray:Account[] =data.data;
 
 // service to get the revenue __________________________________________________________________________________________
-export const getRevenue = ():string=>{
+export const getRevenue = ():number=>{
     let arrayFilter:AccountArrayFilter = {
         account_category:AccountCategoryEnum.Revenue,
     }
 
     // getting total revenue
     let totalRevenue:number = CalculateTotalValue(arrayFilter);
-    // converting the total revenue into currency figure.
-    return toCurrencyFigure(totalRevenue);
+    return totalRevenue;
 } 
 // ________________________________________________________________________________________________________________________
 
@@ -25,14 +24,13 @@ export const getRevenue = ():string=>{
 
 
 // service to get the expense ___________________________________________________________________________________________
-export const getExpenses  = ():string=>{
+export const getExpenses  = ():number=>{
     let arrayFilter:AccountArrayFilter = {
         account_category:AccountCategoryEnum.Expense,
     }
     // getting the total expense
     let totalExpense:number = CalculateTotalValue(arrayFilter);
-    // converting total expense into currency figures.
-    return toCurrencyFigure(totalExpense);
+    return totalExpense;
 }
 // ________________________________________________________________________________________________________________________
 // ________________________________________________________________________________________________________________________
@@ -59,7 +57,7 @@ export const getGrossProfitMargin = (revenue:number):string=>{
 
 
 
-
+// service to ger the net profit margin______________________________________________________________________________
 export const  getNetProfitMargin = (expense:number,revenue:number):string=>{
     // getting the net profit margin
     let netProfitMargin:number = calculateNetProfitMargin(expense,revenue);
@@ -67,3 +65,21 @@ export const  getNetProfitMargin = (expense:number,revenue:number):string=>{
     let netProfitmarginPercentage:string = toPercentage(netProfitMargin);
     return netProfitmarginPercentage;
 }
+// ________________________________________________________________________________________________________________________
+// ________________________________________________________________________________________________________________________
+
+
+
+
+
+// service to get Working Capital Ratio
+export const getWorkingCapitalRatio = ():string =>{
+    let workingCapitalRatio:number = calculateWorkingCapitalRatio();
+    let workingCapitalRatioPercentage:string = toPercentage(workingCapitalRatio); 
+    return workingCapitalRatioPercentage;
+}
+
+
+
+
+

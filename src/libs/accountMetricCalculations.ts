@@ -11,15 +11,20 @@ import MainData from "../../data.json";
 export const CalculateTotalValue  = (condition:AccountArrayFilter):number=>{
     let data:Account[] = MainData.data;
     let totalValue:number  = 0;
-    let filteredData:Account[]  = data.filter(item=>{
-        // as the condition or filter in second parameter is a basic object with keys and value. so this loop first filter out the items from the  whole data that matches the condition inside the filter object. 
-        for (let key in condition){
-            if(item[key as keyof Account] === undefined || item[key as keyof Account] != condition[key as keyof AccountArrayFilter]){
-                return false
+    let filteredData:Account[]=data;
+    let keys = Object.keys(condition)
+    for (let key of keys){
+        let partialFilteredData = filteredData.filter(item=>{
+            const conditionValue = condition[key as keyof AccountArrayFilter];
+            const itemValue = item[key as keyof Account];
+            if(Array.isArray(conditionValue)){
+                return conditionValue.includes(itemValue as typeof conditionValue[number]);
+            }else{
+                return conditionValue === itemValue
             }
-            return true;
-        }
-    })
+        })
+        filteredData = partialFilteredData;
+    }
 
     // now after ggetting the filtered array . (array that matches the condition of the filter). its add all the total value of that filtered array.
     for (let item of filteredData){
@@ -83,19 +88,21 @@ export const calculateTotalAsset = ():number =>{
     let debitAssetFilter:AccountArrayFilter ={
         account_category:AccountCategoryEnum.Assets,
         value_type:ValueTypeEnum.Debit,
-        account_type:AccountTypeEnum.Current||AccountTypeEnum.Bank||AccountTypeEnum.CurrentAccountsReceivable
+        account_type:[AccountTypeEnum.Current,AccountTypeEnum.Bank,AccountTypeEnum.CurrentAccountsReceivable]
     } 
     let TotalDebitAsset:number  = CalculateTotalValue(debitAssetFilter);
     totalAsset  = totalAsset+TotalDebitAsset;
+    
 
     // second subtracting the total_value from all records where the account_category is set to assets, the value_type is set to credit, and the account_type is one of current, bank, or current_accounts_receivable
     let creditAssetFilter:AccountArrayFilter={
         account_category:AccountCategoryEnum.Assets,
         value_type:ValueTypeEnum.Credit,
-        account_type:AccountTypeEnum.Current||AccountTypeEnum.Bank||AccountTypeEnum.CurrentAccountsReceivable
+        // account_type:AccountTypeEnum.Current||AccountTypeEnum.Bank||AccountTypeEnum.CurrentAccountsReceivable
     }
     let TotalCreditAsset:number = CalculateTotalValue(creditAssetFilter)
     totalAsset  = totalAsset-TotalCreditAsset;
+    console.log("cr asset",TotalCreditAsset)
 
     return totalAsset;
 }
@@ -152,6 +159,7 @@ export const calculatetotalLiability = ():number=>{
 export const calculateWorkingCapitalRatio = ():number=>{
     // first getting the asset
     let totalAsset:number= calculateTotalAsset();
+    console.log("asset",totalAsset)
     // second getting the liability
     let totalLiability:number = calculatetotalLiability();
 
