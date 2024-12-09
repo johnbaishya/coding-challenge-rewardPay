@@ -13,7 +13,7 @@ In this document, I will explain the necessary steps to set it up and run it loc
 - after that cd .. inside the project
 - then execute the command "npm install" to install the required libraries to run the project.
 - and finally to run the project execute command "npm run start" or "npm start"
-- for running the project in dev mode. run the command "npm run dev" or "npm dev"
+- for running the project in dev mode. run the command "npm run dev"
 - for running all the tests. run the command "npm test" or "npm run test"
   
 
