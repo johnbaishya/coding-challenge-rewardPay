@@ -4,7 +4,18 @@
 This repository contains the solution submitted by John Baishya for the coding challenge provided by RewadPay. The project is a Node.js application written in TypeScript, following ES6 coding standards.
 The primary functionality of this project is to calculate various account metrics using data from the data.json file, which is located in the root directory of the project.
 
-In this document, I will explain the structure of the project and provide the necessary steps to set it up and run it locally.
+In this document, I will explain the necessary steps to set it up and run it locally and the structure of the project.
+
+## Procedure to setup the project in local machine
+- Ensure you have Node.js installed (I used version v18.20.1). You can check your Node.js version by running:
+  node -v 
+- then clone this project to your local machine
+- after that cd .. inside the project
+- then execute the command "npm install" to install the required libraries to run the project.
+- and finally to run the project execute command "npm run start" or "npm start"
+- for running the project in dev mode. run the command "npm run dev" or "npm dev"
+- for running all the tests. run the command "npm test" or "npm run test"
+  
 
 ## Project Structure
 - src
@@ -58,13 +69,3 @@ This file contains the Node.js configuration for the project, including dependen
 ### tsconfig.json
 This file contains the TypeScript configuration for the project.
 
-## Procedure to setup the project in local machine
-- Ensure you have Node.js installed (I used version v18.20.1). You can check your Node.js version by running:
-  node -v 
-- then clone this project to your local machine
-- after that cd .. inside the project
-- then execute the command "npm install" to install the required libraries to run the project.
-- and finally to run the project execute command "npm run start" or "npm start"
-- for running the project in dev mode. run the command "npm run dev" or "npm dev"
-- for running all the tests. run the command "npm test" or "npm run test"
-  
